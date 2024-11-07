@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal</title>
+    <style>
+        /* Fondo del modal */
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        /* Contenedor del modal */
+        .modal {
+            background-color: white;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 512px;
+            max-height: 75vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Encabezado */
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        /* Botones de la cabecera */
+        .modal-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Cuerpo del modal */
+        .modal-body {
+            padding: 16px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        /* Enlaces de lista */
+        .link-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .link-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border: 1px solid #d7dce1;
+            border-radius: 4px;
+            text-decoration: none;
+            color: black;
+        }
+
+        .link-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .link-icon {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<button id="open-modal">Open modal</button>
+
+
+<!-- Modal -->
+<div class="modal-backdrop" style="display: none;">
+    <div class="modal">
+        <!-- Encabezado del modal -->
+        <div class="modal-header">
+            <button class="modal-button" aria-label="Share Link">
+                <!-- Ícono de compartir -->
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                    <!-- Añadir ruta SVG aquí -->
+                </svg>
+            </button>
+            <h2>Latest release</h2>
+            <button class="modal-button" aria-label="Close dialog">
+                <!-- Ícono de cerrar -->
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                    <!-- Añadir ruta SVG aquí -->
+                </svg>
+            </button>
+        </div>
+
+        <!-- Cuerpo del modal -->
+        <div class="modal-body">
+            <iframe title="Music embed" src="https://open.spotify.com/embed/track/1tEVoDKgao9fpj3zcek1rE" width="100%" height="352" allow="encrypted-media"></iframe>
+
+            <h2 style="margin-top: 16px;">Listen on</h2>
+            <div class="link-list">
+                <a class="link-item" href="https://open.spotify.com/track/1tEVoDKgao9fpj3zcek1rE" target="_blank" rel="noopener noreferrer">
+                    <span class="link-icon">
+                        <!-- Ícono de Spotify -->
+                        <svg width="24" height="24" fill="#1ED760">
+                            <!-- Añadir ruta SVG aquí -->
+                        </svg>
+                    </span>
+                    <span>Spotify</span>
+                </a>
+                <a class="link-item" href="https://geo.music.apple.com" target="_blank" rel="noopener noreferrer">
+                    <span class="link-icon">
+                        <!-- Ícono de Apple Music -->
+                        <svg width="24" height="24">
+                            <!-- Añadir ruta SVG aquí -->
+                        </svg>
+                    </span>
+                    <span>Apple Music</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script>
+    const openModalButton = document.getElementById('open-modal');
+    const modalBackdrop = document.querySelector('.modal-backdrop');
+
+    openModalButton.addEventListener('click', () => {
+        modalBackdrop.style.display = 'flex';
+    });
+
+    modalBackdrop.addEventListener('click', (event) => {
+        if (event.target === modalBackdrop) {
+            modalBackdrop.style.display = 'none';
+        }
+    });
+</script>
+</html>
